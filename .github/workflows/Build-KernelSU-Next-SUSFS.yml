@@ -118,7 +118,7 @@ jobs:
         run: |
          echo "Changing stack size limit..."
          echo "ulimit -s unlimited" >> ~/.bashrc
-         echo "export LDFLAGS='-Wl,-z,stack-size=4096'" >> ~/.bashrc
+         echo "export LDFLAGS='-Wl,-z,stack-size=24576'" >> ~/.bashrc
          source ~/.bashrc
 
       - name: Build kernel
