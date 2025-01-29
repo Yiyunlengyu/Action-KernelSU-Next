@@ -116,7 +116,14 @@ jobs:
         run: |
          cd kernel_workspace
          ./kernel_platform/oplus/build/oplus_build_kernel.sh ${{ github.event.inputs.CPUD }} gki
-         
+      
+      - name: Check kernel image
+       run: |
+         if [ ! -f "kernel_workspace/kernel_platform/out/msm-${{ github.event.inputs.CPUD }}-${{ github.event.inputs.CPUD }}-gki/dist/Image" ]; then
+           echo "Kernel image not found!"
+           exit 1
+         fi
+               
       - name: Make AnyKernel3
         run: |
          git clone https://github.com/Kernel-SU/AnyKernel3 --depth=1
